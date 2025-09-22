@@ -1,0 +1,222 @@
+import 'package:flutter/material.dart';
+
+class AddProdukPage extends StatefulWidget {
+  const AddProdukPage({super.key});
+
+  @override
+  State<AddProdukPage> createState() => _AddProdukPageState();
+}
+
+class _AddProdukPageState extends State<AddProdukPage> {
+  Color get purple => const Color(0xFF925c84);
+  Color get teal => const Color(0xFF10A7A7);
+  Color get bubbleBg => const Color(0xFFd1ecf1);
+
+  @override
+  Widget build(BuildContext context) {
+    final media = MediaQuery.of(context).size;
+
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+          color: Colors.white,
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        backgroundColor: purple,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'Add Product',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, // biar atas dan bawah terpisah
+            children: [
+              // Bagian Form (dibuat scrollable)
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: Colors.grey),
+                                color: Colors.white,
+                              ),
+                              child: const Text(
+                                'Product',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w100,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              textAlign: TextAlign.end,
+                              decoration: InputDecoration(
+                                hintText: '0',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                isCollapsed: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 15),
+                              ),
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(width: 1, color: Colors.grey),
+                              ),
+                              child: const Text('0',
+                                  style:
+                                      TextStyle(fontSize: 14, color: Colors.black)),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(width: 1, color: Colors.grey),
+                              ),
+                              child: const Text('-1',
+                                  style:
+                                      TextStyle(fontSize: 14, color: Colors.black)),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(width: 1, color: Colors.grey),
+                              ),
+                              child: const Text('+1',
+                                  style:
+                                      TextStyle(fontSize: 14, color: Colors.black)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: const [
+                          Icon(Icons.qr_code, color: Colors.grey),
+                          SizedBox(width: 12),
+                          Text('Serial/Lot Number',
+                              style: TextStyle(fontSize: 14, color: Colors.grey)),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Serial/Lot Number',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                isCollapsed: true,
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 15),
+                              ),
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print("Discard ditekan");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(0, 60), // biar tinggi 60, lebar otomatis
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: const BorderSide(width: 1),
+                        ),
+                      ),
+                      child: const Text(
+                        'Discard',
+                        style: TextStyle(fontSize: 14, color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print("Confirm ditekan");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(0, 60),
+                        backgroundColor: purple,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Confirm',
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

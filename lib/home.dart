@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.purple,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],

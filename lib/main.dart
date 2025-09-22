@@ -1,3 +1,4 @@
+import 'package:barcode_odoo/addProduk.dart';
 import 'package:barcode_odoo/home.dart';
 import 'package:flutter/material.dart';
 

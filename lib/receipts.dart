@@ -62,14 +62,12 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: TextField(
-                        readOnly: true,
+                        readOnly: false,
                         decoration: InputDecoration(
                           hintText: 'Cari produk...',
                           prefixIcon: const Icon(Icons.search),
                           contentPadding: const EdgeInsets.all(12),
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                          filled: true,
-                          fillColor: const Color(0XFFf1f4f8),
                         ),
                       ),
                     ),

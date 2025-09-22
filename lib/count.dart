@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'addProduk.dart';
 
 class CountPage extends StatelessWidget {
   const CountPage({super.key});
@@ -26,96 +27,142 @@ class CountPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
                 child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: bubbleBg,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Count product inventory with the help of barcodes.',
-                                  style: TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.info),
-                                  color: Color(0XFF17a2b8),
-                                  onPressed: () {
-                                    print('button info ditekan');
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),  
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: bubbleBg,
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            print('button setting ditekan');
-                          },
-                          icon: const Icon(Icons.settings),
-                          color: Colors.black,
-                        )
-                      ]
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Count product inventory with the help of barcodes.',
+                              style: TextStyle(
+                                  fontSize: 13, color: Color(0XFF17a2b8)),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.info),
+                              color: Color(0XFF17a2b8),
+                              onPressed: () {
+                                print('button info ditekan');
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 100),
-                    Container(
-                      width: media.width * 0.7,
-                      height: media.width * 0.45,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
+                    IconButton(
+                      onPressed: () {
+                        print('button setting ditekan');
+                      },
+                      icon: const Icon(Icons.settings),
+                      color: Colors.black,
+                    )
+                  ]),
+                  const SizedBox(height: 100),
+                  Container(
+                    width: media.width * 0.7,
+                    height: media.width * 0.45,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Image.asset(
+                          'assets/barcode.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    'Tap to scan',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.purple,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
+            )),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                          MaterialPageRoute(
+                            builder: (context) => const AddProdukPage()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 60),
+                      backgroundColor: Color(0XFFFAFAFA),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 0.5),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Image.asset(
-                            'assets/barcode.png',
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      ),
                     ),
-                    const Text(
-                      'Tap to scan',
+                    child: const Text(
+                      'Add Product',
                       style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.purple,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 14, color: Colors.black
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              )),
-            ),
+                SizedBox(width: 12),
 
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    // child: ElevatedButton()
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => const ()
+                      //     )
+                      // );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 60),
+                      backgroundColor: Color(0XFFFAFAFA),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 0.5),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Apply',
+                      style: TextStyle(
+                        fontSize: 18, color: Colors.black
+                      ),
+                    ),
                   )
-                ],
-              ),  
-            )
-          ],
+                ),
+                SizedBox(height: 30)
+              ]
+            ),
+          )
+        ],
       )),
     );
   }
