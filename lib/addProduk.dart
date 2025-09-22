@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'listProduk.dart';
 
 class AddProdukPage extends StatefulWidget {
   const AddProdukPage({super.key});
@@ -14,7 +15,7 @@ class _AddProdukPageState extends State<AddProdukPage> {
 
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context).size;
+    // final media = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -37,35 +38,47 @@ class _AddProdukPageState extends State<AddProdukPage> {
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween, // biar atas dan bawah terpisah
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, 
             children: [
-              // Bagian Form (dibuat scrollable)
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Row(
                         children: [
+                          // GestureDetector membungkus Container sebagai child
                           Expanded(
-                            child: Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: Colors.grey),
-                                color: Colors.white,
-                              ),
-                              child: const Text(
-                                'Product',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w100,
+                            child: GestureDetector(
+                              onTap: () {
+                                // Navigasi ke ListProdukPage saat area Product diklik
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const ListProdukPage(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(color: Colors.grey),
+                                  color: Colors.white,
+                                ),
+                                child: const Text(
+                                  'Product',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w100,
+                                  ),
                                 ),
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
+
                       const SizedBox(height: 12),
                       Row(
                         children: [
@@ -139,8 +152,8 @@ class _AddProdukPageState extends State<AddProdukPage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Row(
-                        children: const [
+                      const Row(
+                        children: [
                           Icon(Icons.qr_code, color: Colors.grey),
                           SizedBox(width: 12),
                           Text('Serial/Lot Number',
@@ -161,8 +174,7 @@ class _AddProdukPageState extends State<AddProdukPage> {
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 15, vertical: 15),
                               ),
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.black),
+                              style: const TextStyle(fontSize: 14, color: Colors.black),
                             ),
                           )
                         ],
@@ -171,6 +183,7 @@ class _AddProdukPageState extends State<AddProdukPage> {
                   ),
                 ),
               ),
+
               Row(
                 children: [
                   Expanded(

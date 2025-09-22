@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
                                   padding: const EdgeInsets.all(0),
                                   // Ganti Image.asset ke Image.network jika mau
                                   child: Image.asset(
-                                    'assets/barcode.png',
+                                    'assets/images/barcode.png',
                                     fit: BoxFit.contain,
                                   ),
                                 ),

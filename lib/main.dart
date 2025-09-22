@@ -1,5 +1,5 @@
-import 'package:barcode_odoo/addProduk.dart';
 import 'package:barcode_odoo/home.dart';
+import 'package:barcode_odoo/listProduk.dart';
 import 'package:flutter/material.dart';
 
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const ListProdukPage(),
     );
   }
 }

@@ -4,10 +4,10 @@ class ManufacturingPage extends StatefulWidget {
   const ManufacturingPage({super.key});
 
   @override
-  State<ManufacturingPage> createState() => _ReceiptsPageState();
+  State<ManufacturingPage> createState() => _ManufacturingPageState();
 }
 
-class _ReceiptsPageState extends State<ManufacturingPage> {
+class _ManufacturingPageState extends State<ManufacturingPage> {
   Color get purple => const Color(0xFF925c84);
   Color get bubbleBg => const Color(0xFFd1ecf1);
   Color get cardBorder => const Color(0XFF57636c);
