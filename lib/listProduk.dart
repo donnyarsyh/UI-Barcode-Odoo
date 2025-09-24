@@ -88,14 +88,14 @@ class _ListProdukPageState extends State<ListProdukPage> {
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: Colors.grey.shade300),
                       ),
-                      child: Row(
+                      child: const Row(
                         children: [
-                          const Icon(Icons.search, color: Colors.grey),
-                          const SizedBox(width: 8),
+                          Icon(Icons.search, color: Colors.grey),
+                          SizedBox(width: 8),
                           Expanded(
                             child: TextField(
                               // controller: _searchController,
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(12),
                                 hintText: 'Search product...',
                                 border: InputBorder.none,
@@ -114,7 +114,8 @@ class _ListProdukPageState extends State<ListProdukPage> {
                       print('New button pressed');
                     },
                     style: ElevatedButton.styleFrom(
-                      textStyle: TextStyle(fontSize: 14),
+                      minimumSize: const Size(0, 50),
+                      textStyle: const TextStyle(fontSize: 14),
                       backgroundColor: purple,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       padding: const EdgeInsets.all(12),

@@ -57,12 +57,12 @@ class _DeliveryPageState extends State<DeliveryPage> {
               children: [
                 const Text('YourCompany', style: TextStyle(fontSize: 14)),
                 const SizedBox(height: 12),
-
                 Row(
                   children: [
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
+                        minimumSize: Size(0, 50),
                         backgroundColor: purple,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -74,16 +74,27 @@ class _DeliveryPageState extends State<DeliveryPage> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: TextField(
-                        readOnly: true,
+                        readOnly: false,
                         decoration: InputDecoration(
-                          hintText: 'Cari produk...',
-                          prefixIcon: const Icon(Icons.search),
-                          contentPadding: const EdgeInsets.all(12),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                          filled: true,
-                          fillColor: const Color(0XFFf1f4f8),
+                          hintText: 'Search...',
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(width: 1, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(12),
+                            
+
+                          ),
+                          isCollapsed: true,
+                          contentPadding: EdgeInsets.all(12),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(
+                              color: Colors.grey, width: 1
+                            )
+                          ),
+                          prefixIcon: Icon(Icons.search, color: Colors.grey)
                         ),
-                      ),
+                        
+                      )
                     ),
                   ],
                 ),
@@ -108,15 +119,20 @@ class _DeliveryPageState extends State<DeliveryPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.fromLTRB(12, 12, 20, 12),
                   decoration: BoxDecoration(color: bubbleBg, borderRadius: BorderRadius.circular(8)),
-                  child: const Row(
+                  child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: Text(
                           'Scan items according to the Sales Order and the stock will automatically decrease.',
                           style: TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
-                        ),
+                        )
                       ),
-                      Icon(Icons.qr_code_scanner, color: Colors.blue),
+                      // const Icon(Icons.qr_code_scanner, color: Colors.blue),
+                      Image.asset(
+                        'assets/images/barcode.png',
+                        width: 50,
+                        height: 50,
+                      )
                     ],
                   ),
                 ),

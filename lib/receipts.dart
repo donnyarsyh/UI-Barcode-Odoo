@@ -1,4 +1,6 @@
+import 'package:barcode_odoo/newProduct.dart';
 import 'package:flutter/material.dart';
+import 'newProduct.dart';
 
 class ReceiptsPage extends StatefulWidget {
   const ReceiptsPage({super.key});
@@ -35,7 +37,7 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
         ),
         title: const Text('Receipts', style: TextStyle(color: Colors.white)),
       ),
-
+      
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -49,28 +51,44 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                 Row(
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NewProductPage())
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
+                        minimumSize: Size(0, 50),
                         backgroundColor: purple,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
                       ),
-                      child: const Text('New', style: TextStyle(color: Colors.white)),
+                      child: const Text('New',
+                          style: TextStyle(color: Colors.white)),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: TextField(
-                        readOnly: false,
-                        decoration: InputDecoration(
-                          hintText: 'Cari produk...',
-                          prefixIcon: const Icon(Icons.search),
-                          contentPadding: const EdgeInsets.all(12),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                        ),
-                      ),
-                    ),
+                        child: TextField(
+                      readOnly: false,
+                      decoration: InputDecoration(
+                          hintText: 'Search...',
+                          border: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.grey),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          isCollapsed: true,
+                          contentPadding: EdgeInsets.all(12),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 1)),
+                          prefixIcon: Icon(Icons.search, color: Colors.grey)),
+                    )),
                   ],
                 ),
 
@@ -93,16 +111,22 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.fromLTRB(12, 12, 20, 12),
-                  decoration: BoxDecoration(color: bubbleBg, borderRadius: BorderRadius.circular(8)),
-                  child: const Row(
+                  decoration: BoxDecoration(
+                      color: bubbleBg, borderRadius: BorderRadius.circular(8)),
+                  child: Row(
                     children: [
-                      Expanded(
-                        child: Text(
-                          'Scan items according to the Purchase Order. Then the stock will automatically increase.',
-                          style: TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
-                        ),
-                      ),
-                      Icon(Icons.qr_code_scanner, color: Colors.blue),
+                      const Expanded(
+                          child: Text(
+                        'Scan items according to the Purchase Order. Then the stock will automatically increase.',
+                        style:
+                            TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
+                      )),
+                      // const Icon(Icons.qr_code_scanner, color: Colors.blue),
+                      Image.asset(
+                        'assets/images/barcode.png',
+                        width: 50,
+                        height: 50,
+                      )
                     ],
                   ),
                 ),
@@ -127,17 +151,26 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(code, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                Text(code,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold)),
                                 const SizedBox(height: 4),
-                                const Text('Wood Corner', style: TextStyle(color: Colors.black54, fontSize: 12)),
+                                const Text('Wood Corner',
+                                    style: TextStyle(
+                                        color: Colors.black54, fontSize: 12)),
                               ],
                             ),
                           ),
                           // Badge (statis hanya contoh)
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                            decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(12)),
-                            child: const Text('Ready', style: TextStyle(color: Colors.white, fontSize: 12)),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 6),
+                            decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Text('Ready',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12)),
                           ),
                         ],
                       ),
@@ -171,11 +204,13 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
         decoration: BoxDecoration(
           color: active ? purple : Colors.white,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: active ? purple : Colors.grey.shade300),
+          border: Border.all(color: active ? purple : Colors.black),
         ),
         child: Text(
           label,
-          style: TextStyle(color: active ? Colors.white : Colors.black87, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              color: active ? Colors.white : Colors.black,
+              fontWeight: FontWeight.w500),
         ),
       ),
     );

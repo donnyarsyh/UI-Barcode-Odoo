@@ -62,7 +62,7 @@ class _AddProdukPageState extends State<AddProdukPage> {
                                 padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(color: Colors.grey),
+                                  border: Border.all(color: Colors.black),
                                   color: Colors.white,
                                 ),
                                 child: const Text(
@@ -90,6 +90,12 @@ class _AddProdukPageState extends State<AddProdukPage> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: BorderSide(
+                                    color: Colors.black
+                                  )
+                                ),
                                 isCollapsed: true,
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 15, vertical: 15),
@@ -97,6 +103,7 @@ class _AddProdukPageState extends State<AddProdukPage> {
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black
                               ),
                             ),
                           )
@@ -110,13 +117,13 @@ class _AddProdukPageState extends State<AddProdukPage> {
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: purple,
                                 borderRadius: BorderRadius.circular(12),
-                                border: Border.all(width: 1, color: Colors.grey),
+
                               ),
                               child: const Text('0',
                                   style:
-                                      TextStyle(fontSize: 14, color: Colors.black)),
+                                      TextStyle(fontSize: 14, color: Colors.white)),
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -125,28 +132,35 @@ class _AddProdukPageState extends State<AddProdukPage> {
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: purple,
                                 borderRadius: BorderRadius.circular(12),
-                                border: Border.all(width: 1, color: Colors.grey),
                               ),
                               child: const Text('-1',
                                   style:
-                                      TextStyle(fontSize: 14, color: Colors.black)),
+                                      TextStyle(fontSize: 14, color: Colors.white)),
                             ),
                           ),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Container(
+                              
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                // boxShadow: [
+                                //   BoxShadow(
+                                //     color: Colors.black.withOpacity(0.2),
+                                //     spreadRadius: 1, //seberapa lebar shadow
+                                //     blurRadius: 1, //tingkatan blur
+                                //     offset: const Offset(1, 1) //letak shadow x,y
+                                //   )
+                                // ],
+                                color: purple,
                                 borderRadius: BorderRadius.circular(12),
-                                border: Border.all(width: 1, color: Colors.grey),
                               ),
                               child: const Text('+1',
                                   style:
-                                      TextStyle(fontSize: 14, color: Colors.black)),
+                                      TextStyle(fontSize: 14, color: Colors.white)),
                             ),
                           ),
                         ],
@@ -169,12 +183,19 @@ class _AddProdukPageState extends State<AddProdukPage> {
                                 hintText: 'Serial/Lot Number',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(12),
+                                  
                                 ),
                                 isCollapsed: true,
                                 contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 15, vertical: 15),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                  borderSide: const BorderSide(
+                                    color: Colors.black,
+                                  )
+                                )
                               ),
-                              style: const TextStyle(fontSize: 14, color: Colors.black),
+                              style: const TextStyle(fontSize: 14, color: Colors.grey),
                             ),
                           )
                         ],
@@ -192,11 +213,11 @@ class _AddProdukPageState extends State<AddProdukPage> {
                         print("Discard ditekan");
                       },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(0, 60), // biar tinggi 60, lebar otomatis
+                        minimumSize: const Size(0, 60), 
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
-                          side: const BorderSide(width: 1),
+                          side: const BorderSide(width: 1, color: Colors.grey),
                         ),
                       ),
                       child: const Text(

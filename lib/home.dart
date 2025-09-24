@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // Konten utama: scrollable
+
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
@@ -79,7 +79,6 @@ class HomePage extends StatelessWidget {
                               child: Center(
                                 child: Padding(
                                   padding: const EdgeInsets.all(0),
-                                  // Ganti Image.asset ke Image.network jika mau
                                   child: Image.asset(
                                     'assets/images/barcode.png',
                                     fit: BoxFit.contain,
@@ -124,13 +123,13 @@ class HomePage extends StatelessWidget {
 
             // dua tombol di bagian bawah
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.fromLTRB(12, 12, 12, 20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: 60,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -141,7 +140,7 @@ class HomePage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: purple,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         elevation: 0,
                       ),
@@ -149,7 +148,6 @@ class HomePage extends StatelessWidget {
                         'Operations',
                         style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w600,
                             color: Colors.white),
                       ),
                     ),
@@ -157,7 +155,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 12),
                   SizedBox(
                     width: double.infinity,
-                    height: 48,
+                    height: 60,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -170,7 +168,7 @@ class HomePage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: teal,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                         elevation: 0,
                       ),
@@ -178,7 +176,6 @@ class HomePage extends StatelessWidget {
                         'Count Inventory',
                         style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w600,
                             color: Colors.white),
                       ),
                     ),

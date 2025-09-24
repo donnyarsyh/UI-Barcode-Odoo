@@ -1,7 +1,9 @@
 import 'package:barcode_odoo/delivery.dart';
 import 'package:barcode_odoo/manufacturing.dart';
+import 'package:barcode_odoo/posOrder.dart';
 import 'package:flutter/material.dart';
 import 'receipts.dart';
+import 'posOrder.dart';
 
 class OperationPage extends StatelessWidget {
   const OperationPage({super.key});
@@ -16,7 +18,7 @@ class OperationPage extends StatelessWidget {
         {'title': 'RECEIPTS', 'count': 4},
         {'title': 'DELIVERY ORDERS', 'count': 16},
         {'title': 'MANUFACTURING', 'count': 2},
-        {'title': 'POS ORDERS', 'count': 0},
+        {'title': 'POS ORDERS', 'count': 1},
       ];
 
   @override
@@ -66,7 +68,7 @@ class OperationPage extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: Colors.grey, width: 0.5),
                   color: const Color(0XFFf1f4f8),
                 ),
                 child: Row(
@@ -87,6 +89,7 @@ class OperationPage extends StatelessWidget {
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(Icons.search),
+                      color: Colors.grey,
                     ),
                   ],
                 ),
@@ -98,7 +101,7 @@ class OperationPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: ListView.separated(
-                  padding: const EdgeInsets.only(top: 0, bottom: 12),
+                  // padding: const EdgeInsets.only(top: 0, bottom: 0),
                   itemCount: items.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 12),
                   itemBuilder: (context, index) {
@@ -145,14 +148,21 @@ class OperationPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const ManufacturingPage()),
           );
         }
+        if (title == 'POS ORDERS') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PosOrderPage()),
+          );
+        }
       },
       child: Container(
         width: width,
+        height: 60,
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(width: 0.5, color: cardBorder),
+          border: Border.all(width: 1, color: cardBorder),
         ),
         child: Row(
           children: [
@@ -173,7 +183,7 @@ class OperationPage extends StatelessWidget {
                 count.toString(),
                 style: const TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
