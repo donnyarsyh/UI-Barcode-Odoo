@@ -29,7 +29,7 @@ class _NewProductPageState extends State<NewProductPage> {
               style: TextStyle(color: Colors.white)),
         ),
         body: SafeArea(
-            child: Column(
+          child: Column(
           children: [
             Expanded(
                 child: Padding(
@@ -41,6 +41,7 @@ class _NewProductPageState extends State<NewProductPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'WH/XX/00001',
@@ -48,7 +49,8 @@ class _NewProductPageState extends State<NewProductPage> {
                           ),
                           Row(
                             children: [
-                              Icon(Icons.people),
+                              Icon(Icons.people_outline),
+                              const SizedBox(width: 12,),
                               Text(
                                 'Wood Corner',
                                 style: TextStyle(

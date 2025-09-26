@@ -1,5 +1,5 @@
 import 'package:barcode_odoo/home.dart';
-import 'package:barcode_odoo/posOrder.dart';
+import 'package:barcode_odoo/pos/posOrder.dart';
 import 'package:flutter/material.dart';
 
 

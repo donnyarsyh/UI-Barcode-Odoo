@@ -1,24 +1,22 @@
+import 'package:barcode_odoo/manufacturing/scanManufacturing.dart';
 import 'package:barcode_odoo/newProduct.dart';
 import 'package:flutter/material.dart';
-import 'newProduct.dart';
 
-class ReceiptsPage extends StatefulWidget {
-  const ReceiptsPage({super.key});
+class ManufacturingPage extends StatefulWidget {
+  const ManufacturingPage({super.key});
 
   @override
-  State<ReceiptsPage> createState() => _ReceiptsPageState();
+  State<ManufacturingPage> createState() => _ManufacturingPageState();
 }
 
-class _ReceiptsPageState extends State<ReceiptsPage> {
+class _ManufacturingPageState extends State<ManufacturingPage> {
   Color get purple => const Color(0xFF925c84);
   Color get bubbleBg => const Color(0xFFd1ecf1);
   Color get cardBorder => const Color(0XFF57636c);
 
   List<String> get receipts => [
-        'WH/IN/00002',
-        'WH/IN/00003',
-        'WH/IN/00004',
-        'WH/IN/00005',
+        'WH/MO/00002',
+        'WH/MO/00003',
       ];
 
   // state yang menyimpan segmen aktif: 0=All, 1=To Do, 2=Ready
@@ -35,9 +33,9 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
           onPressed: () => Navigator.of(context).maybePop(),
         ),
-        title: const Text('Receipts', style: TextStyle(color: Colors.white)),
+        title:
+            const Text('Manufacturing', style: TextStyle(color: Colors.white)),
       ),
-      
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -53,10 +51,9 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NewProductPage())
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NewProductPage()));
                       },
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(0, 50),
@@ -115,9 +112,10 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                       color: bubbleBg, borderRadius: BorderRadius.circular(8)),
                   child: Row(
                     children: [
+                      Padding(padding: const EdgeInsets.all(12)),
                       const Expanded(
                           child: Text(
-                        'Scan items according to the Purchase Order. Then the stock will automatically increase.',
+                        'Scan the raw materials used and the finished products produced. Then the raw material stock decreases and the finished product stock increases.',
                         style:
                             TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
                       )),
@@ -134,50 +132,75 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
 
                 Column(
                   children: receipts.map((code) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 8),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(width: 0.5, color: cardBorder),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.star_border, color: Colors.grey),
-                          const SizedBox(width: 12),
-                          // Code & place
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(code,
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 4),
-                                const Text('Wood Corner',
-                                    style: TextStyle(
-                                        color: Colors.black54, fontSize: 12)),
-                              ],
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ScanManufacturingPage()));
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(width: 0.5, color: cardBorder),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.star_border, color: Colors.grey),
+                            const SizedBox(width: 12),
+                            // Code & place
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(code,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  const SizedBox(height: 4),
+                                  const Text('[FURN_8522] Table Top',
+                                      style: TextStyle(
+                                          color: Colors.black54, fontSize: 12)),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  const Text('5,00 Unit',
+                                      style: TextStyle(
+                                          color: Colors.black54, fontSize: 12)),
+                                ],
+                              ),
                             ),
-                          ),
-                          // Badge (statis hanya contoh)
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 6),
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: const Text('Ready',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 12)),
-                          ),
-                        ],
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(12)),
+                                  child: const Text('Confirmed',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 12)),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  '25/09/2025',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black54),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
                 ),
-
                 const SizedBox(height: 24),
               ],
             ),
@@ -204,13 +227,13 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
         decoration: BoxDecoration(
           color: active ? purple : Colors.white,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: active ? purple : Colors.black),
+          border: Border.all(color: active ? purple : Colors.grey.shade300),
         ),
         child: Text(
           label,
           style: TextStyle(
-              color: active ? Colors.white : Colors.black,
-              fontWeight: FontWeight.w500),
+              color: active ? Colors.white : Colors.black87,
+              fontWeight: FontWeight.w600),
         ),
       ),
     );

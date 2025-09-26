@@ -107,22 +107,22 @@ class _ListProdukPageState extends State<ListProdukPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  // const SizedBox(width: 10),
 
-                  ElevatedButton(
-                    onPressed: () {
-                      print('New button pressed');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(0, 50),
-                      textStyle: const TextStyle(fontSize: 14),
-                      backgroundColor: purple,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      padding: const EdgeInsets.all(12),
-                      elevation: 0,
-                    ),
-                    child: const Text('New', style: TextStyle(color: Colors.white)),
-                  ),
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     print('New button pressed');
+                  //   },
+                  //   style: ElevatedButton.styleFrom(
+                  //     minimumSize: const Size(0, 50),
+                  //     textStyle: const TextStyle(fontSize: 14),
+                  //     backgroundColor: purple,
+                  //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  //     padding: const EdgeInsets.all(12),
+                  //     elevation: 0,
+                  //   ),
+                  //   child: const Text('New', style: TextStyle(color: Colors.white)),
+                  // ),
                 ],
               ),
               const SizedBox(height: 12),

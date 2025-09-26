@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.barcode_odoo"
+    namespace = "com.example.damkar"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

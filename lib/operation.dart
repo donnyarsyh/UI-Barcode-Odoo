@@ -1,9 +1,9 @@
-import 'package:barcode_odoo/delivery.dart';
-import 'package:barcode_odoo/manufacturing.dart';
-import 'package:barcode_odoo/posOrder.dart';
+import 'package:barcode_odoo/delivery/delivery.dart';
+import 'package:barcode_odoo/manufacturing/manufacturing.dart';
+import 'package:barcode_odoo/pos/posOrder.dart';
 import 'package:flutter/material.dart';
-import 'receipts.dart';
-import 'posOrder.dart';
+import 'receipts/receipts.dart';
+import 'pos/posOrder.dart';
 
 class OperationPage extends StatelessWidget {
   const OperationPage({super.key});
@@ -128,6 +128,7 @@ class OperationPage extends StatelessWidget {
     required int count,
     required double width,
   }) {
+    // Text('Your Company');
     return InkWell(
       onTap: () {
         if (title == 'RECEIPTS') {
@@ -155,6 +156,7 @@ class OperationPage extends StatelessWidget {
           );
         }
       },
+      
       child: Container(
         width: width,
         height: 60,
@@ -173,19 +175,24 @@ class OperationPage extends StatelessWidget {
                     const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-              decoration: BoxDecoration(
-                color: purple,
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: Text(
-                count.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
+            Column(
+              children: [
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: purple,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Text(
+                    count.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ],
         ),

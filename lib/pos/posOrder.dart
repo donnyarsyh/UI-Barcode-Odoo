@@ -1,3 +1,4 @@
+import 'package:barcode_odoo/pos/scanPosOrder.dart';
 import 'package:flutter/material.dart';
 
 class PosOrderPage extends StatefulWidget {
@@ -13,7 +14,7 @@ class _PosOrderPageState extends State<PosOrderPage> {
   Color get cardBorder => const Color(0XFF57636c);
 
   List<String> get receipts => [
-        'WH/OUT/00002',
+        'WH/POS/00001',
       ];
 
   // state yang menyimpan segmen aktif: 0=All, 1=To Do, 2=Ready
@@ -32,7 +33,6 @@ class _PosOrderPageState extends State<PosOrderPage> {
         ),
         title: const Text('PoS Order', style: TextStyle(color: Colors.white)),
       ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -53,35 +53,31 @@ class _PosOrderPageState extends State<PosOrderPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
                       ),
-                      child: const Text('New', style: TextStyle(color: Colors.white)),
+                      child: const Text('New',
+                          style: TextStyle(color: Colors.white)),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: TextField(
-                        readOnly: false,
-                        decoration: InputDecoration(
+                        child: TextField(
+                      readOnly: false,
+                      decoration: InputDecoration(
                           hintText: 'Search...',
                           border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 1, color: Colors.grey),
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.grey),
                             borderRadius: BorderRadius.circular(12),
-                            
-
                           ),
                           isCollapsed: true,
                           contentPadding: EdgeInsets.all(12),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(
-                              color: Colors.grey, width: 1
-                            )
-                          ),
-                          prefixIcon: Icon(Icons.search, color: Colors.grey)
-                        ),
-                        
-                      )
-                    ),
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide:
+                                  BorderSide(color: Colors.grey, width: 1)),
+                          prefixIcon: Icon(Icons.search, color: Colors.grey)),
+                    )),
                   ],
                 ),
 
@@ -104,15 +100,16 @@ class _PosOrderPageState extends State<PosOrderPage> {
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.fromLTRB(12, 12, 20, 12),
-                  decoration: BoxDecoration(color: bubbleBg, borderRadius: BorderRadius.circular(8)),
+                  decoration: BoxDecoration(
+                      color: bubbleBg, borderRadius: BorderRadius.circular(8)),
                   child: Row(
                     children: [
                       const Expanded(
-                        child: Text(
-                          'Scan a transfer, a product, or a lot to filter your records',
-                          style: TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
-                        )
-                      ),
+                          child: Text(
+                        'Scan a transfer, a product, or a lot to filter your records',
+                        style:
+                            TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
+                      )),
                       // const Icon(Icons.qr_code_scanner, color: Colors.blue),
                       Image.asset(
                         'assets/images/barcode.png',
@@ -126,41 +123,69 @@ class _PosOrderPageState extends State<PosOrderPage> {
 
                 Column(
                   children: receipts.map((code) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 8),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(width: 0.5, color: cardBorder),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.star_border, color: Colors.grey),
-                          const SizedBox(width: 12),
-                          // Code & place
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(code, style: const TextStyle(fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 4),
-                                const Text('Wood Corner', style: TextStyle(color: Colors.black54, fontSize: 12)),
-                              ],
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ScanPosOrderPage()));
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(width: 0.5, color: cardBorder),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.star_border, color: Colors.grey),
+                            const SizedBox(width: 12),
+                            // Code & place
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(code,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  const SizedBox(height: 4),
+                                  const Text('Wood Corner',
+                                      style: TextStyle(
+                                          color: Colors.black54, fontSize: 12)),
+                                ],
+                              ),
                             ),
-                          ),
-                          // Badge (statis hanya contoh)
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                            decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(12)),
-                            child: const Text('Ready', style: TextStyle(color: Colors.white, fontSize: 12)),
-                          ),
-                        ],
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 6),
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(12)),
+                                  child: const Text('Ready',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 12)),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  '25/09/2025',
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.black54),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
                 ),
-
                 const SizedBox(height: 24),
               ],
             ),
@@ -191,7 +216,9 @@ class _PosOrderPageState extends State<PosOrderPage> {
         ),
         child: Text(
           label,
-          style: TextStyle(color: active ? Colors.white : Colors.black, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: active ? Colors.white : Colors.black,
+              fontWeight: FontWeight.w500),
         ),
       ),
     );
