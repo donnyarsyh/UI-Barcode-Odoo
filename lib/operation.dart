@@ -7,7 +7,7 @@ import 'pos/posOrder.dart';
 
 class OperationPage extends StatelessWidget {
   const OperationPage({super.key});
-
+  
   // Warna tema yang dipakai di design
   Color get purple => const Color(0xFF925c84);
   Color get bubbleBg => const Color(0xFFd1ecf1);
