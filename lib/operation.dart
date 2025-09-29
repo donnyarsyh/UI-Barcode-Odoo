@@ -3,199 +3,204 @@ import 'package:barcode_odoo/manufacturing/manufacturing.dart';
 import 'package:barcode_odoo/pos/posOrder.dart';
 import 'package:flutter/material.dart';
 import 'receipts/receipts.dart';
-import 'pos/posOrder.dart';
 
+// --- MODEL DATA (Model tidak berubah) ---
+
+class Operation {
+  final String title;
+  final int count;
+  final Widget targetPage;
+
+  Operation({required this.title, required this.count, required this.targetPage});
+}
+
+class Warehouse {
+  final String name;
+  final List<Operation> operations;
+
+  Warehouse({required this.name, required this.operations});
+}
 class OperationPage extends StatelessWidget {
   const OperationPage({super.key});
-  
-  // Warna tema yang dipakai di design
-  Color get purple => const Color(0xFF925c84);
-  Color get bubbleBg => const Color(0xFFd1ecf1);
-  Color get cardBorder => const Color(0XFF57636c);
 
-  // Contoh data statis untuk tampilan
-  List<Map<String, dynamic>> get items => [
-        {'title': 'RECEIPTS', 'count': 4},
-        {'title': 'DELIVERY ORDERS', 'count': 16},
-        {'title': 'MANUFACTURING', 'count': 2},
-        {'title': 'POS ORDERS', 'count': 1},
+  Color get purple => const Color(0xFF925c84); 
+  Color get bubbleBg => Color(0xFFd1ecf1); 
+  
+  // --- DATA DUMMY ---
+  List<Warehouse> get warehouses => [
+        Warehouse(
+          name: 'Gudang Surabaya',
+          operations: [
+            Operation(title: 'RECEIPTS', count: 4, targetPage: const ReceiptsPage()),
+            Operation(title: 'DELIVERY ORDERS', count: 16, targetPage: const DeliveryPage()),
+            Operation(title: 'MANUFACTURING', count: 2, targetPage: const ManufacturingPage()),
+            Operation(title: 'POS ORDERS', count: 1, targetPage: const PosOrderPage()),
+          ],
+        ),
+        Warehouse(
+          name: 'Gudang Kediri',
+          operations: [
+            Operation(title: 'RECEIPTS', count: 4, targetPage: const ReceiptsPage()),
+            Operation(title: 'DELIVERY ORDERS', count: 16, targetPage: const DeliveryPage()),
+            Operation(title: 'MANUFACTURING', count: 2, targetPage: const ManufacturingPage()),
+            Operation(title: 'POS ORDERS', count: 1, targetPage: const ManufacturingPage()),
+          ],
+        ),
       ];
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      // AppBar
       appBar: AppBar(
-        backgroundColor: purple,
+        backgroundColor: purple, 
         elevation: 0,
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new,
-              size: 20, color: Colors.white),
-          onPressed: () => Navigator.of(context).maybePop(),
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
+          onPressed: () => Navigator.of(context).pop(), 
         ),
         title: const Text(
           'Operations',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
-
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Info bubble
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: bubbleBg,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Text(
-                  'Determine the type of warehouse activity being performed when using a barcode scanner.',
-                  style: TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
+      
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 20, 12, 20),
+            child: Container(
+              padding: const EdgeInsets.all(12.0),
+              decoration: BoxDecoration(
+                color: bubbleBg,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                'Determine the type of warehouse activity being performed when using a barcode scanner.',
+                style: TextStyle(
+                  color: Color(0XFF17a2b8),
+                  fontSize: 13,
                 ),
               ),
             ),
-
-            // Search field
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey, width: 0.5),
-                  color: const Color(0XFFf1f4f8),
+          ),
+          
+          // --- SEARCH FIELD ---
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+            child: const TextField(
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                filled: true,
+                fillColor: Colors.white,
+                prefixIcon: Icon(Icons.search, color: Colors.grey),
+                contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)), 
+                  borderSide: BorderSide(color: Colors.grey, width: 0.8),
                 ),
-                child: Row(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  borderSide: BorderSide(color: Colors.grey, width: 0.8),
+                ),
+              ),
+            ),
+          ),
+          
+          // --- DAFTAR GUDANG (LISTVIEW) ---
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.zero, // Padding diatur di dalam kolom
+              itemCount: warehouses.length,
+              itemBuilder: (context, warehouseIndex) {
+                final warehouse = warehouses[warehouseIndex];
+                
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(width: 12),
-                    // TextField
-                    const Expanded(
-                      child: TextField(
-                        readOnly: false,
-                        decoration: InputDecoration(
-                          hintText: 'Search...',
-                          border: InputBorder.none,
-                          isCollapsed: true,
-                          contentPadding: EdgeInsets.symmetric(vertical: 12),
+                    // Judul Gudang
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        warehouse.name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
                         ),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.search),
-                      color: Colors.grey,
-                    ),
+                    
+                    // Daftar Operasi di Gudang tersebut
+                    ...warehouse.operations.map((operation) {
+                      return _operationCard(
+                        context: context,
+                        operation: operation,
+                        purple: purple,
+                      );
+                    }).toList(),
+                    
+                    const SizedBox(height: 20),
                   ],
-                ),
-              ),
+                );
+              },
             ),
-
-            // List kartu operasi — gunakan Expanded agar memenuhi sisa layar
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: ListView.separated(
-                  // padding: const EdgeInsets.only(top: 0, bottom: 0),
-                  itemCount: items.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 12),
-                  itemBuilder: (context, index) {
-                    final it = items[index];
-                    return _operationCard(
-                      context: context,
-                      title: it['title'] as String,
-                      count: it['count'] as int,
-                      width: width,
-                    );
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
+  // --- WIDGET CARD OPERASI ---
+  
   Widget _operationCard({
     required BuildContext context,
-    required String title,
-    required int count,
-    required double width,
+    required Operation operation,
+    required Color purple,
   }) {
-    // Text('Your Company');
-    return InkWell(
-      onTap: () {
-        if (title == 'RECEIPTS') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ReceiptsPage()),
-          );
-        }
-        if (title == 'DELIVERY ORDERS') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const DeliveryPage()),
-          );
-        }
-        if (title == 'MANUFACTURING') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ManufacturingPage()),
-          );
-        }
-        if (title == 'POS ORDERS') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const PosOrderPage()),
-          );
-        }
-      },
-      
-      child: Container(
-        width: width,
-        height: 60,
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(width: 1, color: cardBorder),
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5), // Padding vertikal lebih kecil
+      color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side:BorderSide(width: 0.5)
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+        
+        // Judul Operasi
+        title: Text(
+          operation.title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15.0,
+          ),
         ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                title,
-                style:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-              ),
+
+        // Badge Angka (Trailing)
+        trailing: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+          decoration: BoxDecoration(
+            color: (operation.count > 0) ? purple : Colors.grey[400],
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Text(
+            operation.count.toString(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 14.0,
             ),
-            Column(
-              children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: purple,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Text(
-                    count.toString(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
+        
+        // Navigasi
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => operation.targetPage),
+          );
+        },
       ),
     );
   }

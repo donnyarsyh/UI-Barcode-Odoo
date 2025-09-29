@@ -60,7 +60,7 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'WH/XX/00001',
+                        'WH/OUT/00001',
                         style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                       Row(
@@ -141,26 +141,31 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                           ),
                         ],
                       ),
-                      // child: Column(
-                      //   children: [
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Expanded(
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              spacing: 12,
                               children: [
-                                Text(
-                                  'FURN_6677',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 18),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'FURN_6677',
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                    Text(
+                                      'Acoustic Bloc Screens (Black)',
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.black),
+                                    ),
+                                  ]
                                 ),
-                                Text(
-                                  'Acoustic Bloc Screens (Black)',
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.black),
-                                ),
-                                SizedBox(height: 55),
+
                                 SizedBox(
                                   width: double.infinity,
                                   child: const TextField(
@@ -182,43 +187,41 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                             ),
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 20,
                           ),
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            spacing: 12,
                             children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
                                         width: 1, color: Colors.grey),
-                                    color: Colors.grey[200],
-                                    borderRadius: BorderRadius.circular(12),
-                                    image: const DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/acoustic.jpeg'),
-                                      fit: BoxFit.cover,
-                                    )),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const Text(
-                                '1/20 Unit',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.black),
-                              ),
-                              const SizedBox(
-                                height: 12,
+                                        color: Colors.grey[200],
+                                        borderRadius: BorderRadius.circular(12),
+                                        image: const DecorationImage(
+                                          image: AssetImage('assets/images/acoustic.jpeg'),
+                                          fit: BoxFit.cover,
+                                        )
+                                    ),
+                                  ),
+                                  const Text(
+                                    '1/20 Unit',
+                                    style: TextStyle(
+                                        fontSize: 18, color: Colors.black),
+                                  ),
+                                    ],
                               ),
                               Row(
                                 children: [
                                   Container(
-                                    width: 45,
-                                    height: 45,
+                                    width: 35,
+                                    height: 35,
                                     alignment: Alignment.center,
-                                    padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(12),
@@ -231,13 +234,12 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                                     ),
                                   ),
                                   const SizedBox(
-                                    width: 12,
+                                    width: 5,
                                   ),
                                   Container(
-                                    width: 45,
-                                    height: 45,
+                                    width: 35,
+                                    height: 35,
                                     alignment: Alignment.center,
-                                    padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(12),
@@ -250,13 +252,12 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                                     ),
                                   ),
                                   const SizedBox(
-                                    width: 12,
+                                    width: 5,
                                   ),
                                   Container(
-                                    width: 45,
-                                    height: 45,
+                                    width: 35,
+                                    height: 35,
                                     alignment: Alignment.center,
-                                    padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
                                       color: purple,
                                       borderRadius: BorderRadius.circular(12),
@@ -273,15 +274,11 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                           ),
                         ],
                       ),
-                      //   ],
-                      // ),
                     ),
                   ],
                 ),
               ),
-              Padding(
-              padding: const EdgeInsets.fromLTRB(12, 12, 12, 20),
-              child: Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
@@ -326,7 +323,6 @@ class _ScanDeliveryPageState extends State<ScanDeliveryPage> {
                   ),
                 ],
               ),
-            )
             ],
           ),
         ),

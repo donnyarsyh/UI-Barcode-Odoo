@@ -148,20 +148,24 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                               children: [
                                 const Expanded(
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    spacing: 12,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'FURN_8522',
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 18),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'FURN_8522',
+                                            style: TextStyle(
+                                              color: Colors.black, fontSize: 18),
+                                          ),
+                                          Text(
+                                            'Table Top',
+                                            style: TextStyle(
+                                              fontSize: 14, color: Colors.black),
+                                          ),
+                                        ],
                                       ),
-                                      Text(
-                                        'Table Top',
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      ),
-                                      SizedBox(height: 55),
                                       SizedBox(
                                         width: double.infinity,
                                         child: const TextField(
@@ -174,57 +178,51 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                               borderSide: const BorderSide(color: Colors.grey),
                                               borderRadius: BorderRadius.all(Radius.circular(12))
                                             ),
-                                            prefixIcon: const Icon(
-                                                Icons.barcode_reader),
+                                            prefixIcon: const Icon(Icons.barcode_reader),
                                           ),
                                         ),
                                       )
                                     ],
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 40,
-                                ),
+                                SizedBox(width: 30,),
+
                                 Column(
+                                  spacing: 15,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Row(
                                       children: [
                                         IconButton(
                                           onPressed: () {
-                                            Navigator.push(
-                                              context, MaterialPageRoute(
-                                                builder: (context) => SetManufacturingPage()
-                                              )
-                                            );
+                                            Navigator.push(context, MaterialPageRoute(
+                                              builder: (context) => SetManufacturingPage()
+                                            ));
                                           },
                                           icon: Icon(Icons.edit)),
-                                          const SizedBox(width: 12),
                                           Container(
-                                            width: 55,
-                                            height: 45,
+                                            width: 40,
+                                            height: 40,
                                             alignment: Alignment.center,
-                                            padding: const EdgeInsets.all(12),
                                             decoration: BoxDecoration(
-                                                color: purple,
-                                                borderRadius:
-                                                    BorderRadius.circular(12)),
+                                              color: purple,
+                                              borderRadius:
+                                              BorderRadius.circular(12)
+                                            ),
                                             child: Text(
                                               'Add',
                                               style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Colors.white),
+                                                fontSize: 14,
+                                                color: Colors.white),
                                             ),
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(
-                                        height: 70,
-                                      ),
                                       const Text(
                                         '1/20 Unit',
                                         style: TextStyle(
-                                            fontSize: 24, color: Colors.black),
+                                          fontSize: 24, color: Colors.black),
                                       ),
                                   ],
                                 ),
@@ -234,15 +232,13 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                           const SizedBox(
                             height: 12,
                           ),
-
                           //card produk
                           Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
-                              border:
-                                  Border.all(width: 0.5, color: Colors.grey),
+                              border: Border.all(width: 0.5, color: Colors.black),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.2),
@@ -253,39 +249,44 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                               ],
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Expanded(
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    spacing: 12,
                                     children: [
-                                      Text(
-                                        'FURN_7023',
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 18),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'FURN_6677',
+                                            style: TextStyle(
+                                                color: Colors.black, fontSize: 18),
+                                          ),
+                                          Text(
+                                            'Acoustic Bloc Screens (Black)',
+                                            style: TextStyle(
+                                                fontSize: 14, color: Colors.black),
+                                          ),
+                                        ]
                                       ),
-                                      Text(
-                                        'Wood Panel',
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      ),
-                                      SizedBox(height: 55),
+
                                       SizedBox(
                                         width: double.infinity,
                                         child: const TextField(
                                           readOnly: false,
                                           decoration: InputDecoration(
                                             hintText: 'Serial/Lot Number',
-                                            contentPadding:
-                                                const EdgeInsets.all(12),
+                                            contentPadding: const EdgeInsets.all(12),
                                             border: OutlineInputBorder(
                                                 borderSide: const BorderSide(
                                                     color: Colors.grey),
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(12))),
-                                            prefixIcon: const Icon(
-                                                Icons.barcode_reader),
+                                            prefixIcon:
+                                                const Icon(Icons.barcode_reader),
                                           ),
                                         ),
                                       )
@@ -293,97 +294,86 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 40,
+                                  width: 20,
                                 ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
+                                  spacing: 12,
                                   children: [
-                                    Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          width: 50,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
                                               width: 1, color: Colors.grey),
-                                          color: Colors.grey[200],
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          image: const DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/acoustic.jpeg'),
-                                            fit: BoxFit.cover,
-                                          )),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    const Text(
-                                      '1/20 Unit',
-                                      style: TextStyle(
-                                          fontSize: 18, color: Colors.black),
-                                    ),
-                                    const SizedBox(
-                                      height: 12,
+                                              color: Colors.grey[200],
+                                              borderRadius: BorderRadius.circular(12),
+                                              image: const DecorationImage(
+                                                image: AssetImage('assets/images/acoustic.jpeg'),
+                                                fit: BoxFit.cover,
+                                              )
+                                          ),
+                                        ),
+                                        const Text(
+                                          '1/20 Unit',
+                                          style: TextStyle(
+                                              fontSize: 18, color: Colors.black),
+                                        ),
+                                          ],
                                     ),
                                     Row(
                                       children: [
                                         Container(
-                                          width: 45,
-                                          height: 45,
+                                          width: 35,
+                                          height: 35,
                                           alignment: Alignment.center,
-                                          padding: const EdgeInsets.all(12),
                                           decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
+                                              borderRadius: BorderRadius.circular(12),
                                               border: Border.all(
-                                                  width: 1,
-                                                  color: Colors.black)
-                                          ),
+                                                  width: 1, color: Colors.black)),
                                           child: Text(
                                             '-1',
                                             style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.black),
+                                                fontSize: 14, color: Colors.black),
                                           ),
                                         ),
                                         const SizedBox(
-                                          width: 12,
+                                          width: 5,
                                         ),
                                         Container(
-                                          width: 45,
-                                          height: 45,
+                                          width: 35,
+                                          height: 35,
                                           alignment: Alignment.center,
-                                          padding: const EdgeInsets.all(12),
                                           decoration: BoxDecoration(
-                                            color: Color(0XFFebe3e5),
-                                            borderRadius:
-                                              BorderRadius.circular(12),
-                                          ),
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(12),
+                                              border: Border.all(
+                                                  width: 1, color: Colors.black)),
                                           child: Text(
                                             '+1',
                                             style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.black),
+                                                fontSize: 14, color: Colors.black),
                                           ),
                                         ),
                                         const SizedBox(
-                                          width: 12,
+                                          width: 5,
                                         ),
                                         Container(
-                                          width: 45,
-                                          height: 45,
+                                          width: 35,
+                                          height: 35,
                                           alignment: Alignment.center,
-                                          padding: const EdgeInsets.all(12),
                                           decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            borderRadius:
-                                                BorderRadius.circular(12),
+                                            color: purple,
+                                            borderRadius: BorderRadius.circular(12),
                                           ),
                                           child: Text(
                                             '20',
                                             style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.white),
+                                                fontSize: 14, color: Colors.white),
                                           ),
                                         ),
                                       ],
@@ -392,16 +382,14 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 12, 12, 20),
-                child: Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
@@ -446,7 +434,6 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                     ),
                   ],
                 ),
-              )
             ],
           ),
         ),
