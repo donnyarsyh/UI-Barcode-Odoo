@@ -117,13 +117,20 @@ class _AddProdukPageState extends State<AddProdukPage> {
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: purple,
+                                color: Color(0XFFebe3e5),
                                 borderRadius: BorderRadius.circular(12),
-
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 1, //seberapa lebar shadow
+                                    blurRadius: 1, //tingkatan blur
+                                    offset: const Offset(1, 1) //letak shadow x,y
+                                  )
+                                ],
                               ),
                               child: const Text('0',
                                   style:
-                                      TextStyle(fontSize: 14, color: Colors.white)),
+                                      TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -132,35 +139,43 @@ class _AddProdukPageState extends State<AddProdukPage> {
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                color: purple,
+                                color: Color(0XFFebe3e5),
                                 borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 1, //seberapa lebar shadow
+                                    blurRadius: 1, //tingkatan blur
+                                    offset: const Offset(1, 1) //letak shadow x,y
+                                  )
+                                ],
                               ),
                               child: const Text('-1',
                                   style:
-                                      TextStyle(fontSize: 14, color: Colors.white)),
+                                      TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
                             ),
                           ),
                           const SizedBox(width: 12),
+
                           Expanded(
                             child: Container(
-                              
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(12),
                               decoration: BoxDecoration(
-                                // boxShadow: [
-                                //   BoxShadow(
-                                //     color: Colors.black.withOpacity(0.2),
-                                //     spreadRadius: 1, //seberapa lebar shadow
-                                //     blurRadius: 1, //tingkatan blur
-                                //     offset: const Offset(1, 1) //letak shadow x,y
-                                //   )
-                                // ],
-                                color: purple,
+                                color: Color(0XFFebe3e5),
                                 borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.2),
+                                    spreadRadius: 1, //seberapa lebar shadow
+                                    blurRadius: 1, //tingkatan blur
+                                    offset: const Offset(1, 1) //letak shadow x,y
+                                  )
+                                ],
                               ),
                               child: const Text('+1',
                                   style:
-                                      TextStyle(fontSize: 14, color: Colors.white)),
+                                      TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
                             ),
                           ),
                         ],

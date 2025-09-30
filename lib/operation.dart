@@ -43,7 +43,7 @@ class OperationPage extends StatelessWidget {
             Operation(title: 'RECEIPTS', count: 4, targetPage: const ReceiptsPage()),
             Operation(title: 'DELIVERY ORDERS', count: 16, targetPage: const DeliveryPage()),
             Operation(title: 'MANUFACTURING', count: 2, targetPage: const ManufacturingPage()),
-            Operation(title: 'POS ORDERS', count: 1, targetPage: const ManufacturingPage()),
+            Operation(title: 'POS ORDERS', count: 1, targetPage: const PosOrderPage()),
           ],
         ),
       ];
@@ -76,7 +76,7 @@ class OperationPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'Determine the type of warehouse activity being performed when using a barcode scanner.',
+                'Tentukan jenis aktivitas gudang yang sedang dilakukan saat menggunakan pemindai barcode.',
                 style: TextStyle(
                   color: Color(0XFF17a2b8),
                   fontSize: 13,

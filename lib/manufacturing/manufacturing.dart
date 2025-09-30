@@ -112,14 +112,13 @@ class _ManufacturingPageState extends State<ManufacturingPage> {
                       color: bubbleBg, borderRadius: BorderRadius.circular(8)),
                   child: Row(
                     children: [
-                      Padding(padding: const EdgeInsets.all(12)),
                       const Expanded(
                           child: Text(
-                        'Scan the raw materials used and the finished products produced. Then the raw material stock decreases and the finished product stock increases.',
+                        'Pindai bahan baku yang digunakan dan produk jadi yang dihasilkan. Kemudian stok bahan baku berkurang dan stok produk jadi bertambah',
                         style:
                             TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
                       )),
-                      // const Icon(Icons.qr_code_scanner, color: Colors.blue),
+                      SizedBox(width: 12,),
                       Image.asset(
                         'assets/images/barcode.png',
                         width: 50,

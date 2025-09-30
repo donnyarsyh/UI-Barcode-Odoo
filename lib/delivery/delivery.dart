@@ -126,7 +126,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
                     children: [
                       const Expanded(
                           child: Text(
-                        'Scan items according to the Sales Order and the stock will automatically decrease.',
+                        'Pindai barang sesuai dengan Pesanan Penjualan, dan stok akan berkurang secara otomatis',
                         style:
                             TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
                       )),

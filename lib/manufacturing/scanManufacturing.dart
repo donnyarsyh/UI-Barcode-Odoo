@@ -63,7 +63,7 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'WH/XX/00001',
+                        'WH/MO/00001',
                         style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                       Row(
@@ -124,6 +124,30 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                 ),
               ),
               const SizedBox(height: 12),
+
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: purple,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(0)
+                  ),
+                ),
+                child: Row(
+                  spacing: 12,
+                  children: const [
+                    Icon(Icons.location_pin, color: Colors.white,),
+                    Text(
+                      'WH/Stock',
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
               //card bahan baku
               Expanded(
                 child: ListView(
@@ -132,7 +156,12 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0),
+                          bottomLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12)
+                        ),
                         border: Border.all(width: 0.5, color: Colors.black),
                       ),
                       child: Column(
@@ -148,8 +177,9 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                               children: [
                                 const Expanded(
                                   child: Column(
-                                    spacing: 12,
+                                    spacing: 25,
                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,7 +201,7 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                         child: const TextField(
                                           readOnly: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Serial/Lot Number',
+                                            hintText: 'Serial/Lot Number', hintStyle: TextStyle(fontSize: 12),
                                             contentPadding:
                                             const EdgeInsets.all(12),
                                             border: OutlineInputBorder(
@@ -188,7 +218,7 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                 SizedBox(width: 30,),
 
                                 Column(
-                                  spacing: 15,
+                                  spacing: 35,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
@@ -254,10 +284,11 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                               children: [
                                 const Expanded(
                                   child: Column(
-                                    spacing: 12,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    spacing: 28,
                                     children: [
                                       Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
@@ -278,7 +309,7 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                         child: const TextField(
                                           readOnly: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Serial/Lot Number',
+                                            hintText: 'Serial/Lot Number', hintStyle: TextStyle(fontSize: 12),
                                             contentPadding: const EdgeInsets.all(12),
                                             border: OutlineInputBorder(
                                                 borderSide: const BorderSide(
@@ -297,8 +328,9 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                                   width: 20,
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
-                                  spacing: 12,
+                                  spacing: 10,
                                   children: [
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -428,7 +460,7 @@ class _ScanManufacturingPageState extends State<ScanManufacturingPage> {
                         ),
                         child: const Text(
                           'Validate',
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: TextStyle(fontSize: 14, color: Colors.black),
                         ),
                       ),
                     ),

@@ -106,7 +106,7 @@ class _PosOrderPageState extends State<PosOrderPage> {
                     children: [
                       const Expanded(
                           child: Text(
-                        'Scan a transfer, a product, or a lot to filter your records',
+                        'Pindai transfer, produk, atau batch untuk menyaring catatan Anda.',
                         style:
                             TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
                       )),

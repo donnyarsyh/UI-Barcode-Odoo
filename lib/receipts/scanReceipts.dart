@@ -15,7 +15,7 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
 
   //variabel state untuk menyimpan jumlah unit
   int _currentUnit = 1;
-  final int _totalUnit = 20;
+  final int _totalUnit = 20; // Stok yang tersedia
 
   // Fungsi untuk mengubah unit (dipanggil oleh tombol)
   void _updateUnit(int change) {
@@ -30,6 +30,13 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
       } else {
         _currentUnit = newUnit;
       }
+    });
+  }
+  
+  // Fungsi untuk mengatur unit ke nilai maksimum (total unit)
+  void _setUnitToMax() {
+    setState(() {
+      _currentUnit = _totalUnit;
     });
   }
 
@@ -59,17 +66,17 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'WH/IN/00001',
                         style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                       Row(
                         children: [
-                          Icon(Icons.people_outline),
+                          const Icon(Icons.people_outline),
                           const SizedBox(
                             width: 12,
                           ),
-                          Text(
+                          const Text(
                             'Wood Corner',
                             style: TextStyle(fontSize: 14, color: Colors.black),
                           )
@@ -92,9 +99,9 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SettingPage()));
+                                    builder: (context) => const SettingPage()));
                           },
-                          icon: Icon(Icons.settings_outlined))
+                          icon: const Icon(Icons.settings_outlined))
                     ],
                   )
                 ],
@@ -122,6 +129,30 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
               ),
               const SizedBox(height: 12),
 
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: purple,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(0)
+                  ),
+                ),
+                child: Row(
+                  spacing: 12,
+                  children: const [
+                    Icon(Icons.location_pin, color: Colors.white,),
+                    Text(
+                      'WH/Stock',
+                      style: TextStyle(fontSize: 15, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+
               // Bagian card produk
               Expanded(
                 child: ListView(
@@ -130,7 +161,12 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0),
+                          bottomLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12)
+                        ),
                         border: Border.all(width: 0.5, color: Colors.black),
                         boxShadow: [
                           BoxShadow(
@@ -141,17 +177,17 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                           ),
                         ],
                       ),
+                      
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Expanded(
+                          Expanded(
                             child: Column(
-                              spacing: 12,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [ 
+                                const Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
                                   children: [
                                     Text(
                                       'FURN_6677',
@@ -166,31 +202,35 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                                   ]
                                 ),
 
+                                const SizedBox(height: 35), // Mengganti `spacing: 28`
+
                                 SizedBox(
                                   width: double.infinity,
-                                  child: const TextField(
+                                  child: TextField(
                                     readOnly: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Serial/Lot Number',
+                                      hintText: 'Serial/Lot Number', hintStyle: const TextStyle(fontSize: 12),
                                       contentPadding: const EdgeInsets.all(12),
-                                      border: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                      border: const OutlineInputBorder(
+                                          borderSide: BorderSide(
                                               color: Colors.grey),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(12))),
                                       prefixIcon:
-                                          const Icon(Icons.barcode_reader),
+                                          const Icon(Icons.qr_code_scanner_outlined), // Mengganti barcode_reader
                                     ),
                                   ),
                                 )
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Column(
-                            spacing: 12,
+                            // Menghapus `spacing: 10` karena tidak ada di `Column`
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -209,63 +249,80 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                                         )
                                     ),
                                   ),
-                                  const Text(
-                                    '1/20 Unit',
-                                    style: TextStyle(
+                                  const SizedBox(height: 8), // Menambahkan jarak
+
+                                  // **MODIFIKASI: Menampilkan _currentUnit**
+                                  Text(
+                                    '$_currentUnit/$_totalUnit Unit',
+                                    style: const TextStyle(
                                         fontSize: 18, color: Colors.black),
                                   ),
                                     ],
                               ),
+                              const SizedBox(height: 10), // Mengganti `spacing: 10`
+                              
                               Row(
                                 children: [
-                                  Container(
-                                    width: 35,
-                                    height: 35,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(
-                                            width: 1, color: Colors.black)),
-                                    child: Text(
-                                      '-1',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.black),
+                                  // **MODIFIKASI: Tombol -1**
+                                  InkWell(
+                                    onTap: () => _updateUnit(-1),
+                                    child: Container(
+                                      width: 35,
+                                      height: 35,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(
+                                              width: 1, color: Colors.black)),
+                                      child: const Text(
+                                        '-1',
+                                        style: TextStyle(
+                                            fontSize: 14, color: Colors.black),
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  Container(
-                                    width: 35,
-                                    height: 35,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(
-                                            width: 1, color: Colors.black)),
-                                    child: Text(
-                                      '+1',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.black),
+                                  // **MODIFIKASI: Tombol +1**
+                                  InkWell(
+                                    onTap: () => _updateUnit(1),
+                                    child: Container(
+                                      width: 35,
+                                      height: 35,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(
+                                              width: 1, color: Colors.black)),
+                                      child: const Text(
+                                        '+1',
+                                        style: TextStyle(
+                                            fontSize: 14, color: Colors.black),
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(
                                     width: 5,
                                   ),
-                                  Container(
-                                    width: 35,
-                                    height: 35,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: purple,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Text(
-                                      '20',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.white),
+                                  // **MODIFIKASI: Tombol 20 (Set to Max)**
+                                  InkWell(
+                                    onTap: _setUnitToMax,
+                                    child: Container(
+                                      width: 35,
+                                      height: 35,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: purple,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Text(
+                                        '$_totalUnit', // Menampilkan total unit
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -317,7 +374,7 @@ class _ScanReceiptsPageState extends State<ScanReceiptsPage> {
                       ),
                       child: const Text(
                         'Validate',
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ),
                   ),

@@ -44,6 +44,27 @@ class _ListProdukPageState extends State<ListProdukPage> {
       'tags': [],
       'image': 'assets/images/storage_box.png',
     },
+    {
+      'title': 'Paku 1Kg',
+      'code': '',
+      'price': 'Rp 20.000',
+      'tags': [],
+      'image': 'assets/images/paku.png',
+    },
+    {
+      'title': 'Samsung Galaxy S25 Ultra',
+      'code': '',
+      'price': 'Rp 20.999.999',
+      'tags': ['Black', 'Silver', 'Purple'],
+      'image': 'assets/images/S25.png',
+    },
+    {
+      'title': 'Kayu',
+      'code': '',
+      'price': 'Rp 50.000',
+      'tags': [],
+      'image': 'assets/images/kayu.jpg',
+    },
     // tambahkan item lain sesuai kebutuhan...
   ];
 
@@ -82,7 +103,8 @@ class _ListProdukPageState extends State<ListProdukPage> {
                   // search field mengambil sisa ruang
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12),
@@ -183,7 +205,8 @@ class _ListProdukPageState extends State<ListProdukPage> {
                     Expanded(
                       child: Text(
                         title,
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w700),
                       ),
                     ),
                   ],
@@ -192,7 +215,9 @@ class _ListProdukPageState extends State<ListProdukPage> {
                 const SizedBox(height: 6),
 
                 // kode produk
-                Text(code, style: const TextStyle(fontSize: 12, color: Colors.black54)),
+                Text(code,
+                    style:
+                        const TextStyle(fontSize: 12, color: Colors.black54)),
 
                 const SizedBox(height: 8),
 
@@ -203,7 +228,8 @@ class _ListProdukPageState extends State<ListProdukPage> {
                     runSpacing: 6,
                     children: tags.map((t) {
                       return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: const Color(0xFFFFEFE8), // warna tag contoh
                           borderRadius: BorderRadius.circular(8),

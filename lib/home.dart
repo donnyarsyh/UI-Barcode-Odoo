@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(
-                          'Scan the product by clicking the product button below. You can also use a smartphone and scanning device.',
+                          'Pindai produk dengan mengklik tombol barcode di bawah ini. Anda juga dapat menggunakan smartphone dan perangkat pemindai.',
                           style: TextStyle(
                             fontSize: 13, color: Color(0XFF17a2b8)
                           ),
@@ -104,13 +104,13 @@ class HomePage extends StatelessWidget {
                       Column(
                         children: [
                           _checkText(
-                              'Scan a product or its packaging to locate it'),
+                              'Pindai produk atau kemasannya untuk menemukannya.'),
                           const SizedBox(height: 8),
-                          _checkText('Scan a tracking number to open it'),
+                          _checkText('Pindai nomor pelacakan untuk membukanya'),
                           const SizedBox(height: 8),
-                          _checkText('Scan a picking to open it'),
+                          _checkText('Pindai kode bar untuk membukanya'),
                           const SizedBox(height: 8),
-                          _checkText('Scan an operation type to start it'),
+                          _checkText('Pindai jenis operasi untuk memulainya'),
                         ],
                       ),
 

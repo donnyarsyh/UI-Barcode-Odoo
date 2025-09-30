@@ -113,7 +113,7 @@ class _ReceiptsPageState extends State<ReceiptsPage> {
                     children: [
                       const Expanded(
                         child: Text(
-                          'Scan items according to the Purchase Order. Then the stock will automatically increase.',
+                          'Pindai barang sesuai dengan Pesanan Pembelian. Kemudian stok akan secara otomatis bertambah',
                           style: TextStyle(fontSize: 13, color: Color(0XFF17a2b8)),
                         ),
                       ),
